@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:currency/core/colors.dart';
+import 'package:currency/core/icons.dart';
 import 'package:currency/core/strings.dart';
 import 'package:currency/models/currency_model.dart';
 import 'package:flutter/material.dart';
@@ -37,22 +38,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {},
-          child: const Icon(Icons.arrow_back_outlined,
-              color: Colors.black, size: 28),
+          child: arrowBackIcon,
         ),
         actions: [
-          GestureDetector(
-            onTap: () {},
-            child: const Icon(Icons.search_rounded,
-                color: Colors.black, size: 28),
-          ),
+          GestureDetector(onTap: () {}, child: searchIcon),
           const SizedBox(width: 20),
         ],
         title: const Text(
           appBarTitle,
-          style: TextStyle(
-            color: Colors.black,
-          ),
+          style: TextStyle(color: appBarTitleColor),
         ),
       ),
       body: FutureBuilder(
@@ -125,11 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              Icon(
-                Icons.notifications_active_outlined,
-                color: Colors.grey.shade400,
-                size: 30,
-              )
+              notificationIcon
             ],
           ),
           Row(
@@ -151,10 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(color: Colors.grey),
-          ),
+          Text(title, style: const TextStyle(color: currencyTitleColor)),
           const SizedBox(height: 2),
           Text(
             cur,
