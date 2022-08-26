@@ -1,10 +1,20 @@
 import 'package:currency/core/colors.dart';
 import 'package:currency/core/strings.dart';
-import 'package:currency/screens/home_screen.dart';
+import 'package:currency/presentation/provider/data_class.dart';
+import 'package:currency/presentation/views/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    // MyApp(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => DataClass()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
