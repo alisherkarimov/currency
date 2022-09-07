@@ -1,16 +1,22 @@
 import 'package:currency/core/colors.dart';
 import 'package:currency/core/strings.dart';
-import 'package:currency/presentation/provider/data_class.dart';
+import 'package:currency/doman/repositories/currency_repository_impl.dart';
+import 'package:currency/presentation/provider/home_provider.dart';
 import 'package:currency/presentation/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'data/datasources/remote/currency_datasource_impl.dart';
+import 'doman/usecases/currency_use_case_impl.dart';
+
 void main() {
+  CurrencyUseCaseImpl data =
+      CurrencyUseCaseImpl(CurrencyRepositoryImpl(CurrencyDataSourceImpl()));
   runApp(
     // MyApp(),
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => DataClass()),
+        ChangeNotifierProvider(create: (_) => HomePageViewModel(data)),
       ],
       child: const MyApp(),
     ),

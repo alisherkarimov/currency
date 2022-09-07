@@ -5,10 +5,10 @@ import 'package:currency/core/strings.dart';
 import 'package:flutter/material.dart';
 
 Container buildCurrencyList({
-  String? code = '',
-  String? cbPrice = '',
-  String? nbuBuyPrice = '',
-  String? nbuCellPrice = '',
+  String? code = '---',
+  String? cbPrice = '---',
+  String? nbuBuyPrice = '---',
+  String? nbuCellPrice = '---',
 }) {
   return Container(
     margin: const EdgeInsets.all(20),
@@ -71,7 +71,7 @@ Padding _buildPosition(String title, String cur) {
         Text(title, style: const TextStyle(color: currencyTitleColor)),
         const SizedBox(height: 2),
         Text(
-          cur,
+          cur != ''?cur:'-----------',
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
         )
       ],

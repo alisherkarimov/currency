@@ -1,10 +1,15 @@
 import 'dart:convert';
 
-import 'package:currency/models/currency_model.dart';
 import 'package:http/http.dart' as http;
 
-class Service {
-  static Future<List<CurrencyModel>> fetchResult() async {
+import '../../models/currency_model.dart';
+import 'currency_datasource.dart';
+
+
+
+class CurrencyDataSourceImpl extends CurrencyDataSource{
+  @override
+  Future<List<CurrencyModel>> getData() async {
     const String postsURL = "https://nbu.uz/uz/exchange-rates/json/";
     final res = await http.get(Uri.parse(postsURL));
     final body = jsonDecode(res.body);
